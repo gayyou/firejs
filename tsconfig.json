@@ -1,0 +1,25 @@
+{
+  "references": [
+    {
+      "path": "packages/build-script"
+    },
+    {
+      "path": "packages/build-script-config"
+    },
+    {
+      "path": "packages/firejs"
+    },
+    {
+      "path": "packages/plugin-vue-app"
+    }
+  ],
+  "exclude": [
+    "./node_modules"
+  ],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "packages/*/src"
+  ]
+}

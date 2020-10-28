@@ -1,0 +1,20 @@
+{
+  "exclude": [
+    "__tests__"
+  ],
+  "compilerOptions": {
+    "target": "es5",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "",
+    "paths": {
+      "@firejs/*": [
+        "packages/*/src"
+      ]
+    }
+  }
+}
