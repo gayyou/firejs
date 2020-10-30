@@ -1,0 +1,27 @@
+{
+  "name": "build-script-config",
+  "version": "1.0.1",
+  "description": "base webpack config, base jest config",
+  "keywords": [
+    "config"
+  ],
+  "author": "gayyou <zxc365912613@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "dependencies": {
+    "webpack-chain": "^6.5.1",
+    "@types/webpack-chain": "^5.2.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

@@ -4,7 +4,7 @@
  * 入口：api
  */
 import {FPluginApi} from "@firejs/build-script";
-import {getWebpackConfig} from "@firejs/build-script-config"
+import {getWebpackConfig} from "@firejs/build-script-config";
 
 export function getBaseConfig(api: FPluginApi) {
   let {onGetWebpackConfig, registerTask} = api;

@@ -1,9 +1,20 @@
 // @ts-ignore
 import _ from 'lodash';
 import {contextShadowProperty} from "./constant";
+import {awaitExpression} from "@babel/types";
+const assert = require('assert');
 const fs = require('fs');
 const isUndef = (tar) => typeof tar === 'undefined' || tar === null;
 const isDef = (tar) => !isUndef(tar);
+const validationFuncMap = {
+  string: _.isString,
+  number: _.isNumber,
+  undefined: _.isUndefined,
+  null: _.isNull,
+  NaN: _.isNaN,
+  object: _.isObject,
+  symbol: _.isSymbol
+};
 
 interface WebpackConfigItem {
   name: string;
@@ -25,7 +36,7 @@ export interface FPluginContext {
 
 export interface RegisterUserWebpackItem {
   name: string;
-  validation: (value: any) => boolean;
+  validation: ((value: any) => boolean) | string;
   configWebpack: Function;
   defaultValue: any;
 }
@@ -129,9 +140,27 @@ export class Context {
   public async runUserConfig() {
     Object.keys(this.userRegistration).forEach(key => {
       let {name, configWebpack, defaultValue, validation} = this.userRegistration[key];
+      let value = this.userConfig[name] ? this.userConfig[name] : defaultValue;
 
       if (isDef(validation)) {
+        if (_.isString(validation)) {
+          // 字符串的时候进行常用的数据类型校验
+          let checkFunc = validationFuncMap[<string>validation];
 
+          if (_.isUndefined(checkFunc)) {
+            console.warn(`userConfig ${name}: validation ${validation} is not support to check`);
+          } else {
+            assert.ok(checkFunc(value), `${name} param type is check fail`);
+          }
+        } else {
+          // 检验是一个方法的时候，进行执行方法
+          // @ts-ignore
+          assert.ok(validation(value), `${name} param type is check fail`);
+        }
+      }
+      // 检验完毕后会进行执行参数
+      if (configWebpack) {
+        this.runWebpackFn(configWebpack, value);
       }
     });
   }

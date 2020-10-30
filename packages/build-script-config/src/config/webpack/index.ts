@@ -1,6 +1,6 @@
 import {getConfig} from "./webpack.base";
 
-export default (mode: string) => {
+export function getWebpackConfig(mode: string) {
   let config = getConfig(mode);
 
   if (mode === 'development') {

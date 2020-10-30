@@ -1,0 +1,24 @@
+{
+  "name": "firejs",
+  "version": "1.0.1",
+  "description": "firejs base plugins",
+  "keywords": [
+    "base",
+    "plugins"
+  ],
+  "author": "gayyou <zxc365912613@qq.com>",
+  "homepage": "",
+  "private": true,
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

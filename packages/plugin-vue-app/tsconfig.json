@@ -4,7 +4,6 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "lib"
   }
 }
