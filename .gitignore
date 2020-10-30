@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules
-**/node_modules
-**/__test__
+**/node_modules/
+**/__test__/*
 /server/node_modules
 /.pnp
 .pnp.js
